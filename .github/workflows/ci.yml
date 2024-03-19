@@ -7,10 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
@@ -19,16 +21,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install
-
     - name: Run tests
       run: |
         poetry run pytest
-
     - name: Run linter
       run: |
         poetry run flake8
-
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.ref }}
