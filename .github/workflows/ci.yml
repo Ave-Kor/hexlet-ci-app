@@ -7,12 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        ref: ${{ github.ref }}
+    - uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2.4.0 # Обновлено до последней версии
       with:
         python-version: '3.x'
 
@@ -27,3 +25,4 @@ jobs:
     - name: Run linter
       run: |
         poetry run flake8
+
