@@ -19,9 +19,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install
+
     - name: Run tests
       run: |
         poetry run pytest
+
     - name: Run linter
       run: |
         poetry run flake8
